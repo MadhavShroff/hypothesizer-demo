@@ -1,0 +1,70 @@
+{
+    "children": [
+        {
+            "children": [
+                {
+                    "children": [
+                        {
+                            "children": [
+                                {
+                                    "children": [],
+                                    "question": "Since you are mutating the state and you expect a render to take place, check the location of the state update for any bugs in the implementation",
+                                    "thisAnswer": "Yes",
+                                    "nodeType": "hypothesis"
+                                },
+                                {
+                                    "children": [],
+                                    "question": "Since you are mutating the state and you do not expect a render to take place, remove the state update call",
+                                    "thisAnswer": "No",
+                                    "nodeType": "hypothesis"
+                                }
+                            ],
+                            "question": "Is a render expected to take place?",
+                            "thisAnswer": "Yes",
+                            "nodeType": "question"
+                        },
+                        {
+                            "children": [],
+                            "question": "Is a render expected to take place?",
+                            "thisAnswer": "No",
+                            "nodeType": "question"
+                        }
+                    ],
+                    "question": "Is this component mutating the state?",
+                    "thisAnswer": "Functional",
+                    "nodeType": "question"
+                },
+                {
+                    "children": [],
+                    "question": "Is this component mutating the state?",
+                    "thisAnswer": "Class",
+                    "nodeType": "question"
+                }
+            ],
+            "question": "Is the bug in a functional component or a class component?",
+            "thisAnswer": "React",
+            "nodeType": "question"
+        },
+        {
+            "children": [],
+            "question": "This is not supported yet",
+            "thisAnswer": "Angular",
+            "nodeType": "question"
+        },
+        {
+            "children": [],
+            "question": "This is not supported yet",
+            "thisAnswer": "Vue.js",
+            "nodeType": "question"
+        },
+        {
+            "children": [],
+            "question": "This is not supported yet",
+            "thisAnswer": "Gatsby.js",
+            "nodeType": "question"
+        }
+    ],
+    "question": "What framework or technology is being used here?",
+    "thisAnswer": null,
+    "nodeType": "question"
+}
