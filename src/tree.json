@@ -8,63 +8,85 @@
                             "children": [
                                 {
                                     "children": [],
-                                    "question": "Since you are mutating the state and you expect a render to take place, check the location of the state update for any bugs in the implementation",
+                                    "question": "Since you are mutating the state, and you expect a render to take place, please check the location of the state update for any potential bugs in the implementation",
                                     "thisAnswer": "Yes",
-                                    "nodeType": "hypothesis"
+                                    "nodeType": "hypothesis",
+                                    "infoLink": "https://reactjs.org/docs/hooks-state.html#gatsby-focus-wrapper",
+                                    "infoDesc": "Render call expected"
                                 },
                                 {
                                     "children": [],
-                                    "question": "Since you are mutating the state and you do not expect a render to take place, remove the state update call",
+                                    "question": "Since you are mutating the state and you do not expect a render to take place, consider removing the state update call to resolve the bug",
                                     "thisAnswer": "No",
-                                    "nodeType": "hypothesis"
+                                    "nodeType": "hypothesis",
+                                    "infoLink": "https://reactjs.org/docs/hooks-state.html#gatsby-focus-wrapper",
+                                    "infoDesc": "Render call not expected"
                                 }
                             ],
                             "question": "Is a render expected to take place?",
                             "thisAnswer": "Yes",
-                            "nodeType": "question"
+                            "nodeType": "question",
+                            "infoLink": "https://reactjs.org/docs/conditional-rendering.html#gatsby-focus-wrapper",
+                            "infoDesc": "Component mutates state"
                         },
                         {
                             "children": [],
                             "question": "Is a render expected to take place?",
                             "thisAnswer": "No",
-                            "nodeType": "question"
+                            "nodeType": "question",
+                            "infoLink": "https://reactjs.org/docs/conditional-rendering.html#gatsby-focus-wrapper",
+                            "infoDesc": "Component does not mutates state"
                         }
                     ],
                     "question": "Is this component mutating the state?",
-                    "thisAnswer": "Functional",
-                    "nodeType": "question"
+                    "thisAnswer": "Function",
+                    "nodeType": "question",
+                    "infoLink": "https://reactjs.org/docs/state-and-lifecycle.html",
+                    "infoDesc": "Component is a Function"
                 },
                 {
                     "children": [],
                     "question": "Is this component mutating the state?",
                     "thisAnswer": "Class",
-                    "nodeType": "question"
+                    "nodeType": "question",
+                    "infoLink": "https://reactjs.org/docs/state-and-lifecycle.html",
+                    "infoDesc": "Component is a Class"
                 }
             ],
-            "question": "Is the bug in a functional component or a class component?",
+            "question": "Is the bug in a function component or a class component?",
             "thisAnswer": "React",
-            "nodeType": "question"
+            "nodeType": "question",
+            "infoLink": "https://reactjs.org/docs/components-and-props.html#function-and-class-components",
+            "infoDesc": "Framework used: React"
         },
         {
             "children": [],
             "question": "This is not supported yet",
             "thisAnswer": "Angular",
-            "nodeType": "question"
+            "nodeType": "question",
+            "infoLink": null,
+            "infoDesc": "Framework used: Angular"
         },
         {
             "children": [],
             "question": "This is not supported yet",
             "thisAnswer": "Vue.js",
-            "nodeType": "question"
+            "nodeType": "question",
+            "infoLink": null,
+            "infoDesc": "Framework used: Vue.js"
         },
         {
             "children": [],
             "question": "This is not supported yet",
             "thisAnswer": "Gatsby.js",
-            "nodeType": "question"
+            "nodeType": "question",
+            "infoLink": null,
+            "infoDesc": "Framework used: Gatsby.js"
         }
     ],
     "question": "What framework or technology is being used here?",
     "thisAnswer": null,
-    "nodeType": "question"
+    "nodeType": "question",
+    "infoLink": "https://en.wikipedia.org/wiki/Web_framework",
+    "infoDesc": null
 }
