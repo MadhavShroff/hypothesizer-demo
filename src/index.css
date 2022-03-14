@@ -11,3 +11,9 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.node__leaf > circle {
+  fill: green;
+  size: 2cm;
+  /* Let's also make the radius of leaf nodes larger */
+}

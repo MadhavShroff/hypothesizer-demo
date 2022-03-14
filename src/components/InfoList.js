@@ -1,5 +1,6 @@
 import {React} from "react";
-import { Box } from "@mui/material";
+import { Box, Link } from "@mui/material";
+import flatTree from "../TreeNode/flattenedNodeStructure"
 
 const styles = {
     bgcolor: 'background.paper',
@@ -13,14 +14,16 @@ const styles = {
   };
 
 export const InfoList = (props) => {
-    let info = []
-    console.log(props);
-    let {list} = props;
-    if(list.length === 0) return (<></>);
-
-    else list.forEach(item => {
+    let info = [];
+    let {list, setInfoList, setNode} = props;
+    if(list.length <= 1) return (<></>);
+    else list.forEach(item => { // each item in the list
         info.push(
-            <h2>{item}</h2>
+            <Link key={item} href="#" onClick={() => {
+                const newInfoList = list.slice(0, list.indexOf(item))
+                setInfoList(newInfoList);
+                setNode(flatTree.find(ele => ele.nodeID === newInfoList[newInfoList.length - 1])); // Find node that has nodeID as item               
+            }} underline="hover"><h2>{flatTree.find(ele => ele.nodeID === item).infoDesc}</h2></Link>
         );
     })
     return (

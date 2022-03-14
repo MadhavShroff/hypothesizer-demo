@@ -1,0 +1,309 @@
+[
+    {
+        "nodeID": 10,
+        "children": [
+            {
+                "nodeID": 6,
+                "children": [
+                    {
+                        "nodeID": 4,
+                        "children": [
+                            {
+                                "nodeID": 2,
+                                "children": [
+                                    {
+                                        "nodeID": 0,
+                                        "children": [],
+                                        "question": "Since you are mutating the state, and you expect a render to take place, please check the location of the state update for any potential bugs in the implementation",
+                                        "thisAnswer": "Yes",
+                                        "nodeType": "hypothesis",
+                                        "infoLink": "https://reactjs.org/docs/hooks-state.html#gatsby-focus-wrapper",
+                                        "infoDesc": "Render call expected"
+                                    },
+                                    {
+                                        "nodeID": 1,
+                                        "children": [],
+                                        "question": "Since you are mutating the state and you do not expect a render to take place, consider removing the state update call to resolve the bug",
+                                        "thisAnswer": "No",
+                                        "nodeType": "hypothesis",
+                                        "infoLink": "https://reactjs.org/docs/hooks-state.html#gatsby-focus-wrapper",
+                                        "infoDesc": "Render call not expected"
+                                    }
+                                ],
+                                "question": "Is a render expected to take place?",
+                                "thisAnswer": "Yes",
+                                "nodeType": "question",
+                                "infoLink": "https://reactjs.org/docs/conditional-rendering.html#gatsby-focus-wrapper",
+                                "infoDesc": "Component mutates state"
+                            },
+                            {
+                                "nodeID": 3,
+                                "children": [],
+                                "question": "Is a render expected to take place?",
+                                "thisAnswer": "No",
+                                "nodeType": "question",
+                                "infoLink": "https://reactjs.org/docs/conditional-rendering.html#gatsby-focus-wrapper",
+                                "infoDesc": "Component does not mutates state"
+                            }
+                        ],
+                        "question": "Is this component mutating the state?",
+                        "thisAnswer": "Function",
+                        "nodeType": "question",
+                        "infoLink": "https://reactjs.org/docs/state-and-lifecycle.html",
+                        "infoDesc": "Component Type: Function"
+                    },
+                    {
+                        "nodeID": 5,
+                        "children": [],
+                        "question": "Is this component mutating the state?",
+                        "thisAnswer": "Class",
+                        "nodeType": "question",
+                        "infoLink": "https://reactjs.org/docs/state-and-lifecycle.html",
+                        "infoDesc": "Component Type: Class"
+                    }
+                ],
+                "question": "Is the bug in a function component or a class component?",
+                "thisAnswer": "React",
+                "nodeType": "question",
+                "infoLink": "https://reactjs.org/docs/components-and-props.html#function-and-class-components",
+                "infoDesc": "Framework used: React"
+            },
+            {
+                "nodeID": 7,
+                "children": [],
+                "question": "This is not supported yet",
+                "thisAnswer": "Angular",
+                "nodeType": "question",
+                "infoLink": null,
+                "infoDesc": "Framework used: Angular"
+            },
+            {
+                "nodeID": 8,
+                "children": [],
+                "question": "This is not supported yet",
+                "thisAnswer": "Vue.js",
+                "nodeType": "question",
+                "infoLink": null,
+                "infoDesc": "Framework used: Vue.js"
+            },
+            {
+                "nodeID": 9,
+                "children": [],
+                "question": "This is not supported yet",
+                "thisAnswer": "Gatsby.js",
+                "nodeType": "question",
+                "infoLink": null,
+                "infoDesc": "Framework used: Gatsby.js"
+            }
+        ],
+        "question": "What framework or technology is being used?",
+        "thisAnswer": null,
+        "nodeType": "question",
+        "infoLink": "https://en.wikipedia.org/wiki/Web_framework",
+        "infoDesc": null
+    },
+    {
+        "nodeID": 6,
+        "children": [
+            {
+                "nodeID": 4,
+                "children": [
+                    {
+                        "nodeID": 2,
+                        "children": [
+                            {
+                                "nodeID": 0,
+                                "children": [],
+                                "question": "Since you are mutating the state, and you expect a render to take place, please check the location of the state update for any potential bugs in the implementation",
+                                "thisAnswer": "Yes",
+                                "nodeType": "hypothesis",
+                                "infoLink": "https://reactjs.org/docs/hooks-state.html#gatsby-focus-wrapper",
+                                "infoDesc": "Render call expected"
+                            },
+                            {
+                                "nodeID": 1,
+                                "children": [],
+                                "question": "Since you are mutating the state and you do not expect a render to take place, consider removing the state update call to resolve the bug",
+                                "thisAnswer": "No",
+                                "nodeType": "hypothesis",
+                                "infoLink": "https://reactjs.org/docs/hooks-state.html#gatsby-focus-wrapper",
+                                "infoDesc": "Render call not expected"
+                            }
+                        ],
+                        "question": "Is a render expected to take place?",
+                        "thisAnswer": "Yes",
+                        "nodeType": "question",
+                        "infoLink": "https://reactjs.org/docs/conditional-rendering.html#gatsby-focus-wrapper",
+                        "infoDesc": "Component mutates state"
+                    },
+                    {
+                        "nodeID": 3,
+                        "children": [],
+                        "question": "Is a render expected to take place?",
+                        "thisAnswer": "No",
+                        "nodeType": "question",
+                        "infoLink": "https://reactjs.org/docs/conditional-rendering.html#gatsby-focus-wrapper",
+                        "infoDesc": "Component does not mutates state"
+                    }
+                ],
+                "question": "Is this component mutating the state?",
+                "thisAnswer": "Function",
+                "nodeType": "question",
+                "infoLink": "https://reactjs.org/docs/state-and-lifecycle.html",
+                "infoDesc": "Component Type: Function"
+            },
+            {
+                "nodeID": 5,
+                "children": [],
+                "question": "Is this component mutating the state?",
+                "thisAnswer": "Class",
+                "nodeType": "question",
+                "infoLink": "https://reactjs.org/docs/state-and-lifecycle.html",
+                "infoDesc": "Component Type: Class"
+            }
+        ],
+        "question": "Is the bug in a function component or a class component?",
+        "thisAnswer": "React",
+        "nodeType": "question",
+        "infoLink": "https://reactjs.org/docs/components-and-props.html#function-and-class-components",
+        "infoDesc": "Framework used: React"
+    },
+    {
+        "nodeID": 4,
+        "children": [
+            {
+                "nodeID": 2,
+                "children": [
+                    {
+                        "nodeID": 0,
+                        "children": [],
+                        "question": "Since you are mutating the state, and you expect a render to take place, please check the location of the state update for any potential bugs in the implementation",
+                        "thisAnswer": "Yes",
+                        "nodeType": "hypothesis",
+                        "infoLink": "https://reactjs.org/docs/hooks-state.html#gatsby-focus-wrapper",
+                        "infoDesc": "Render call expected"
+                    },
+                    {
+                        "nodeID": 1,
+                        "children": [],
+                        "question": "Since you are mutating the state and you do not expect a render to take place, consider removing the state update call to resolve the bug",
+                        "thisAnswer": "No",
+                        "nodeType": "hypothesis",
+                        "infoLink": "https://reactjs.org/docs/hooks-state.html#gatsby-focus-wrapper",
+                        "infoDesc": "Render call not expected"
+                    }
+                ],
+                "question": "Is a render expected to take place?",
+                "thisAnswer": "Yes",
+                "nodeType": "question",
+                "infoLink": "https://reactjs.org/docs/conditional-rendering.html#gatsby-focus-wrapper",
+                "infoDesc": "Component mutates state"
+            },
+            {
+                "nodeID": 3,
+                "children": [],
+                "question": "Is a render expected to take place?",
+                "thisAnswer": "No",
+                "nodeType": "question",
+                "infoLink": "https://reactjs.org/docs/conditional-rendering.html#gatsby-focus-wrapper",
+                "infoDesc": "Component does not mutates state"
+            }
+        ],
+        "question": "Is this component mutating the state?",
+        "thisAnswer": "Function",
+        "nodeType": "question",
+        "infoLink": "https://reactjs.org/docs/state-and-lifecycle.html",
+        "infoDesc": "Component Type: Function"
+    },
+    {
+        "nodeID": 2,
+        "children": [
+            {
+                "nodeID": 0,
+                "children": [],
+                "question": "Since you are mutating the state, and you expect a render to take place, please check the location of the state update for any potential bugs in the implementation",
+                "thisAnswer": "Yes",
+                "nodeType": "hypothesis",
+                "infoLink": "https://reactjs.org/docs/hooks-state.html#gatsby-focus-wrapper",
+                "infoDesc": "Render call expected"
+            },
+            {
+                "nodeID": 1,
+                "children": [],
+                "question": "Since you are mutating the state and you do not expect a render to take place, consider removing the state update call to resolve the bug",
+                "thisAnswer": "No",
+                "nodeType": "hypothesis",
+                "infoLink": "https://reactjs.org/docs/hooks-state.html#gatsby-focus-wrapper",
+                "infoDesc": "Render call not expected"
+            }
+        ],
+        "question": "Is a render expected to take place?",
+        "thisAnswer": "Yes",
+        "nodeType": "question",
+        "infoLink": "https://reactjs.org/docs/conditional-rendering.html#gatsby-focus-wrapper",
+        "infoDesc": "Component mutates state"
+    },
+    {
+        "nodeID": 0,
+        "children": [],
+        "question": "Since you are mutating the state, and you expect a render to take place, please check the location of the state update for any potential bugs in the implementation",
+        "thisAnswer": "Yes",
+        "nodeType": "hypothesis",
+        "infoLink": "https://reactjs.org/docs/hooks-state.html#gatsby-focus-wrapper",
+        "infoDesc": "Render call expected"
+    },
+    {
+        "nodeID": 1,
+        "children": [],
+        "question": "Since you are mutating the state and you do not expect a render to take place, consider removing the state update call to resolve the bug",
+        "thisAnswer": "No",
+        "nodeType": "hypothesis",
+        "infoLink": "https://reactjs.org/docs/hooks-state.html#gatsby-focus-wrapper",
+        "infoDesc": "Render call not expected"
+    },
+    {
+        "nodeID": 3,
+        "children": [],
+        "question": "Is a render expected to take place?",
+        "thisAnswer": "No",
+        "nodeType": "question",
+        "infoLink": "https://reactjs.org/docs/conditional-rendering.html#gatsby-focus-wrapper",
+        "infoDesc": "Component does not mutates state"
+    },
+    {
+        "nodeID": 5,
+        "children": [],
+        "question": "Is this component mutating the state?",
+        "thisAnswer": "Class",
+        "nodeType": "question",
+        "infoLink": "https://reactjs.org/docs/state-and-lifecycle.html",
+        "infoDesc": "Component Type: Class"
+    },
+    {
+        "nodeID": 7,
+        "children": [],
+        "question": "This is not supported yet",
+        "thisAnswer": "Angular",
+        "nodeType": "question",
+        "infoLink": null,
+        "infoDesc": "Framework used: Angular"
+    },
+    {
+        "nodeID": 8,
+        "children": [],
+        "question": "This is not supported yet",
+        "thisAnswer": "Vue.js",
+        "nodeType": "question",
+        "infoLink": null,
+        "infoDesc": "Framework used: Vue.js"
+    },
+    {
+        "nodeID": 9,
+        "children": [],
+        "question": "This is not supported yet",
+        "thisAnswer": "Gatsby.js",
+        "nodeType": "question",
+        "infoLink": null,
+        "infoDesc": "Framework used: Gatsby.js"
+    }
+]
