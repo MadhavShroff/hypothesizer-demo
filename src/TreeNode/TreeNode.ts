@@ -45,62 +45,165 @@ export function generateExampleTree() : void {
         null, 
         [
             new TreeNode(
-                "Is the bug in a function component or a class component?",
+                "Please enter all components where you suspect there may be a bug.",
                 "React",
-                "question",
+                "question: list components",
                 "https://reactjs.org/docs/components-and-props.html#function-and-class-components",
                 "Framework used: React",
                 [
                     new TreeNode(
-                        "Is this component mutating the state?", 
-                        "Function",
+                        "Is this component a function component or a class component?",
+                        "Done",
                         "question",
-                        "https://reactjs.org/docs/state-and-lifecycle.html",
-                        "Component Type: Function",
+                        "https://reactjs.org/docs/components-and-props.html#function-and-class-components",
+                        "Obtained Component List",
                         [
                             new TreeNode(
-                                "Is a render expected to take place?",
-                                "Yes",
+                                "Is this component a pure component?", 
+                                "Function",
                                 "question",
-                                "https://reactjs.org/docs/conditional-rendering.html#gatsby-focus-wrapper",
-                                "Component mutates state",
+                                "https://medium.com/technofunnel/working-with-react-pure-components-166ded26ae48",
+                                "Component Type: Function",
                                 [
                                     new TreeNode(
-                                        "Since you are mutating the state, and you expect a render to take place, please check the location of the state update for any potential bugs in the implementation",
+                                        "Are all JSX elements defined in this component being drawn on screen?", 
                                         "Yes",
-                                        "hypothesis",
-                                        "https://reactjs.org/docs/hooks-state.html#gatsby-focus-wrapper",
-                                        "Render call expected",
-                                        []
+                                        "question",
+                                        null,
+                                        "Pure Component",
+                                        [
+                                            new TreeNode(
+                                                "This component is performing as expected. The defect is likely in a different component.", 
+                                                "Yes",
+                                                "hypothesis",
+                                                null,
+                                                "All JSX Elements Drawn",
+                                                [new TreeNode(
+                                                    null, 
+                                                    "Analyze next Component",
+                                                    "return",
+                                                    null,
+                                                    "return",
+                                                    []
+                                                )]
+                                            ),
+                                            new TreeNode(
+                                                "This component is performing as expected. The defect is likely in a different component. This component might have styling that prevents some elements from being rendered on screen. Please check the styling applied to verify.", 
+                                                "No",
+                                                "hypothesis",
+                                                null,
+                                                "Likely Incorrect Styling",
+                                                [new TreeNode(
+                                                    null, 
+                                                    "Analyze next Component",
+                                                    "return",
+                                                    null,
+                                                    "return",
+                                                    []
+                                                )]
+                                            ),
+                                        ]
                                     ),
                                     new TreeNode(
-                                        "Since you are mutating the state and you do not expect a render to take place, consider removing the state update call to resolve the bug",
+                                        "Are all JSX elements defined in this component being drawn on screen?", 
                                         "No",
-                                        "hypothesis",
-                                        "https://reactjs.org/docs/hooks-state.html#gatsby-focus-wrapper",
-                                        "Render call not expected",
-                                        []
-                                    )
+                                        "question",
+                                        null,
+                                        "Impure Component",
+                                        [
+                                            new TreeNode(
+                                                "Is the data or its behavior shown on the screen as expected?", 
+                                                "Yes",
+                                                "question",
+                                                "",
+                                                "All JSX Elements Drawn",
+                                                [
+                                                    new TreeNode(
+                                                        "This component is performing as expected. The defect is likely in a different component.", 
+                                                        "Yes",
+                                                        "hypothesis",
+                                                        "",
+                                                        "Data in view is Accurate",
+                                                        [new TreeNode(
+                                                            null, 
+                                                            "Analyze next Component",
+                                                            "return",
+                                                            null,
+                                                            "return",
+                                                            []
+                                                        )]
+                                                    ),
+                                                    new TreeNode(
+                                                        "Is the state update performed using hooks?", 
+                                                        "No",
+                                                        "question",
+                                                        "",
+                                                        "Data in view is Not Accurate",
+                                                        [
+                                                            new TreeNode(
+                                                                "In an impure functional component, state updates must be performed using React Hooks. (Learn more about correct usage of hooks)", 
+                                                                "No",
+                                                                "hypothesis",
+                                                                "",
+                                                                "State not updated using Hooks",
+                                                                [new TreeNode(
+                                                                    null, 
+                                                                    "Analyze next Component",
+                                                                    "return",
+                                                                    null,
+                                                                    "return",
+                                                                    []
+                                                                )]
+                                                            ),
+                                                            new TreeNode(
+                                                                "Are you creating a new copy of the existing state object, modifying it and passing it to the hook? (Learn more about correct usage of hooks)", 
+                                                                "Yes",
+                                                                "question",
+                                                                "",
+                                                                "State updated using Hooks",
+                                                                [
+                                                                    new TreeNode(
+                                                                        "This component is performing as expected. The defect is likely in a different component.", 
+                                                                        "Yes",
+                                                                        "hypothesis",
+                                                                        "",
+                                                                        "Correctly updated state with Hooks",
+                                                                        [new TreeNode(
+                                                                            null, 
+                                                                            "Analyze next Component",
+                                                                            "return",
+                                                                            null,
+                                                                            "return",
+                                                                            []
+                                                                        )]
+                                                                    ),
+                                                                    new TreeNode(
+                                                                        "This component does not use React hooks as expected. Please create a copy of the state object and pass it to your created hook. ", 
+                                                                        "No",
+                                                                        "hypothesis",
+                                                                        "https://reactjs.org/docs/hooks-rules.html",
+                                                                        "Incorrectly updated state with Hooks",
+                                                                        [new TreeNode(
+                                                                            null, 
+                                                                            "Analyze next Component",
+                                                                            "return",
+                                                                            null,
+                                                                            "return",
+                                                                            []
+                                                                        )]
+                                                                    ),
+                                                                ]
+                                                            ),
+                                                        ]
+                                                    ),
+                                                ]
+                                            ),
+                                        ]
+                                    ),
                                 ]
                             ),
-                            new TreeNode(
-                                "Is a render expected to take place?",
-                                "No",
-                                "question",
-                                "https://reactjs.org/docs/conditional-rendering.html#gatsby-focus-wrapper",
-                                "Component does not mutates state",
-                                []
-                            )
                         ]
-                    ),
-                    new TreeNode(
-                        "Is this component mutating the state?", 
-                        "Class",
-                        "question",
-                        "https://reactjs.org/docs/state-and-lifecycle.html",
-                        "Component Type: Class",
-                        []
-                    ),
+                    )
                 ]
             ),
             new TreeNode(
