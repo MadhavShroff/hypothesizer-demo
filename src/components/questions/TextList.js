@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button, FormControl, FormLabel, Typography, TextField, Box } from "@mui/material";
 
-export const List = (props) => {
+export const TextList = (props) => {
     const { question, callbackAnswer } = props;
     const [answer, setAnswer] = React.useState([]);
     const component = React.useRef(null);

@@ -2,7 +2,9 @@ import * as React from "react"
 import "./App.css"
 import { MultipleChoices } from "./questions/MultipleChoices"
 import { Button } from "@mui/material"
-import { List } from "./questions/List"
+import { TextList } from "./questions/TextList"
+import { PickList } from "./questions/PickList"
+
 import DecisionTree from "../tree.json";
 
 export const App = () => {
@@ -12,6 +14,9 @@ export const App = () => {
   const defectContextComponent = React.useRef([]);
   let currentComponent = React.useRef(-1);
   let nodes = React.useRef(DecisionTree);
+  const currentUIElements = React.useRef([]);
+  const goBackToNode = React.useRef(null);
+  const answerIndex = React.useRef(-1);
 
   const setComponents = (components) => {
     currentComponent.current++
@@ -19,8 +24,17 @@ export const App = () => {
     defectContextComponent.current = components.map(ele => ({ componentName: ele, defectContext: [] }));
     setCurrentNode(node.children[0]);
   }
+  const setUIElements = (elements) => {
+    currentUIElements.current = elements;
+    goBackToNode.current = node;
+    answerIndex.current = answers.current.length - 1;
+    answerQuestion(currentUIElements.current.pop());
+  }
   const answerQuestion = (answer) => {
-    const futureNode = node.children.find(child => child.path.includes(answer));
+    let futureNode = node.children.find(child => child.path.includes(answer))
+    if (futureNode === undefined) {
+      futureNode = nodes.current[1];
+    }
     answers.current.push(answer);
     if (currentComponent.current === -1) {
       defectContextGeneral.current.push(`${node.infoDesc}${answer}`);
@@ -36,7 +50,13 @@ export const App = () => {
     answers.current.forEach((answer, i) => {
       if (newNode.nodeType === "faultLocations") {
         newNode = newNode.children[0]
-      } else {
+      }
+      else if (newNode.nodeType === "PickList"){ 
+        let localAnswer = currentUIElements.current.pop();
+        newNode = newNode.children.find(child => child.path.includes(localAnswer))
+        answers.current.push(localAnswer);
+      }
+      else {
         newNode = newNode.children.find(child => child.path.includes(answer));
       }
     });
@@ -46,24 +66,40 @@ export const App = () => {
       currentComponent.current = -1;
       defectContextGeneral.current = [];
     }
-    else {
+    
+    if (index === 2) {
       currentComponent.current++;
     }
+   
     setCurrentNode(newNode);
   }
+
   const getQuestion = (node) => {
     if (node.nodeType === "multipleChoice") {
       return <MultipleChoices question={node.question} answers={node.answers} callbackAnswer={answerQuestion} context={defectContextComponent.current[currentComponent.current]?.componentName} />
     }
-    if (node.nodeType === "faultLocations") {
-      return <List question={node.question} answers={node.answers} callbackAnswer={setComponents} context={defectContextComponent.current[currentComponent.current]?.componentName} />
+    if (node.nodeType === "textList") {
+      return <TextList question={node.question} answers={node.answers} callbackAnswer={setComponents} context={defectContextComponent.current[currentComponent.current]?.componentName} />
+    }
+    if (node.nodeType === "pickList") {
+      return <PickList question={node.question} answers={node.answers} callbackAnswer={setUIElements} context={defectContextComponent.current[currentComponent.current]?.componentName} />
     }
     if (node.nodeType === "deadEnd") {
-      if (defectContextComponent.current.length > currentComponent.current + 1) 
+      if(currentUIElements.current.length > 0) {
         return (
           <div>
-            The <b>{defectContextComponent.current[currentComponent.current].componentName}</b> {" "+node.question}
-            <br/>
+            The <b>{answers.current[answerIndex]}</b> UI element seems to be correctly implemented.
+            <br />
+            <Button variant="contained" style={{ "margin": "1em 1em 1em 1em" }} onClick={() => goBackTo(answerIndex.current)}>
+             Check {currentUIElements.current[currentUIElements.current.length-1]} UI Element</Button>
+          </div>
+        )
+      }
+      if (defectContextComponent.current.length > currentComponent.current + 1)
+        return (
+          <div>
+            The <b>{defectContextComponent.current[currentComponent.current].componentName}</b> {" " + node.question}
+            <br />
             <Button variant="contained" style={{ "margin": "1em 1em 1em 1em" }} onClick={() => goBackTo(2)}>
               Go To {defectContextComponent.current[currentComponent.current + 1].componentName} Component</Button>
           </div>
@@ -87,9 +123,26 @@ export const App = () => {
       )
     }
     if (node.nodeType === "hypothesis") {
-      return <div>{node.question}</div>
+      let gobackIndex = 0;
+      let buttotnText = "RESTART";
+      if (defectContextComponent.current.length > currentComponent.current + 1){
+        gobackIndex = 2;
+        buttotnText = "Go To " + defectContextComponent.current[currentComponent.current + 1].componentName + " Component";
+      }
+      if (currentUIElements.current.length > 0) {
+        gobackIndex = answerIndex.current;
+        buttotnText = "Check " + currentUIElements.current[currentUIElements.current.length - 1] + " UI Element";
+      }
+
+      return <div>{node.question}
+      <Button variant="contained" style={{ "margin": "1em 1em 1em 1em" }} onClick={() => goBackTo(gobackIndex)}>
+        {buttotnText}
+      </Button>
+      </div>
     }
   }
+
+
   const getGeneralContext = () => {
     if (defectContextGeneral.current.length > 0) {
       return (
