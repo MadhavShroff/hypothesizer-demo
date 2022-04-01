@@ -1,7 +1,7 @@
 import React from 'react';
-import { FormControl, FormControlLabel, FormLabel, Checkbox, Button, FormGroup } from "@mui/material";;
+import { FormControl, FormControlLabel, FormLabel, Checkbox, Button, FormGroup, Stack } from "@mui/material";;
 export const PickList = (props) => {
-    const { question, answers, callbackAnswer, context } = props;
+    const { question, answers, callbackAnswer, context, goBackTo } = props;
     const [answer, setAnswer] = React.useState([]);
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -32,7 +32,10 @@ export const PickList = (props) => {
                     {answers.map(answer => <FormControlLabel value={answer} control={<Checkbox />} onChange={handleChange} label={answer}
                         key={answer} />)}
                 </FormGroup>
-                <Button disabled={answer.length === 0} variant="contained" style={{ "margin": "1em 1em 1em 1em" }} type="submit">Next</Button>
+                <Stack direction="row" justifyContent={'center'}>
+                <Button color='error' variant="outlined" style={{ "margin": "1em 1em 1em 1em", "":"red" }} onClick={() => goBackTo("end")}>Back</Button>
+                <Button color='success' disabled={answer.length === 0} variant="outlined" style={{ "margin": "1em 1em 1em 1em" }} type="submit">Next</Button>
+                </Stack>
             </FormControl>
         </form>
     )

@@ -1,5 +1,6 @@
 [
     {
+        "Id": "0",
         "question": "What framework or technology is being used here?",
         "answers": [
             "React",
@@ -13,6 +14,7 @@
         "path": null,
         "children": [
             {
+                "Id": "2",
                 "question": "What is the best description of the incorrect output?",
                 "answers": [
                     "The program incorrectly render elements/values in the UI (e.g. the element is not visible).",
@@ -28,6 +30,7 @@
                 ],
                 "children": [
                     {
+                        "Id": "3",
                         "question": "What is incorrect in the UI elements or values?",
                         "answers": [
                             "The UI is positioned incorrectly (e.g., the UI is not centered)",
@@ -44,8 +47,10 @@
                         ],
                         "children": [
                             {
-                                "question": "Please enter all components where you suspect there may be a bug",
+                                "Id": "4",
+                                "question": "Please enter the name of one component where you suspect it may contain the bug",
                                 "answers": "Component Name",
+                                "answerType": "componentName",
                                 "nodeType": "textList",
                                 "infoLink": "https://reactjs.org/docs/components-and-props.html#function-and-class-components",
                                 "infoDesc": "The defect might be related to ",
@@ -56,22 +61,22 @@
                                 ],
                                 "children": [
                                     {
-                                        "question": "Please add all UI elements in the component?",
+                                        "Id": "5",
+                                        "question": "Please select the UI element in the component where you suspect it may contain the bug",
                                         "answers": [
                                             "button",
                                             "input type=text",
                                             "input type=list",
-                                            "input type=checkbox",
                                             "none of the above"
                                         ],
-                                        "nodeType": "pickList",
+                                        "nodeType": "multipleChoice",
+                                        "answerType": "UIelementName",
                                         "infoLink": "https://reactjs.org/docs/components-and-props.html#function-and-class-components",
                                         "infoDesc": "The defect might be related to ",
-                                        "path": [
-                                            "The UI has incorrect content (text, images, etc.)."
-                                        ],
+                                        "path": "*",
                                         "children": [
                                             {
+                                                "Id": "6",
                                                 "question": "Does the state suppose to change after evnets related to the button?",
                                                 "answers": [
                                                     "Yes (e.g., clicking the button call useState APIs)",
@@ -85,34 +90,139 @@
                                                 ],
                                                 "children": [
                                                     {
-                                                        "question": "",
+                                                        "Id": "7",
+                                                        "question": "What is the type of event that triggers the state change?",
                                                         "answers": [
-                                                            "All JSX elements are rendered correctly",
-                                                            "Not all JSX elements are rendered correctly"
+                                                            "onClick",
+                                                            "onKeyUp",
+                                                            "onKeyDown",
+                                                            "onKeyPress",
+                                                            "none of the above"
                                                         ],
                                                         "nodeType": "multipleChoice",
                                                         "infoDesc": "",
                                                         "path": [
-                                                            "Yes"
+                                                            "Yes (e.g., clicking the button call useState APIs)"
                                                         ],
                                                         "children": [
                                                             {
-                                                                "question": "The defect is ...",
+                                                                "Id": "8",
+                                                                "question": "The defect might be related to the event attached to the text input. Try to change the event to onChange and see if that fix the defect.",
                                                                 "answers": null,
                                                                 "nodeType": "hypothesis",
                                                                 "infoLink": "https://reactjs.org/docs/components-and-props.html#function-and-class-components",
                                                                 "infoDesc": "Hypothesis",
                                                                 "path": [
-                                                                    "Not all JSX elements are rendered correctly"
+                                                                    "onKeyUp",
+                                                                    "onKeyDown",
+                                                                    "onKeyPress",
+                                                                    "none of the above"
                                                                 ]
                                                             },
                                                             {
+                                                                "Id": "9",
+                                                                "question": "How does the onClick handler invoke the callback function?",
+                                                                "answers": [
+                                                                    "onClick={handleClick}",
+                                                                    "onClick={handleClick()}",
+                                                                    "onClick={handleClick(parameter)}",
+                                                                    "onClick={()=> handleClick(parameter)}",
+                                                                    "onClick={()=> handleClick}",
+                                                                    "none of the above"
+                                                                ],
+                                                                "nodeType": "multipleChoice",
+                                                                "infoLink": null,
+                                                                "path": [
+                                                                    "onClick"
+                                                                ],
+                                                                "infoDesc": "All seems to be well so far in this component.",
+                                                                "children": [
+                                                                    {
+                                                                        "Id": "10",
+                                                                        "question": "The defect might be related to how the callabck is been invoked. Try to change it to onChange={handleClick} or onChange={()=>handleClick(paramter)} if you need to pass a paramter to the callback.",
+                                                                        "answers": null,
+                                                                        "nodeType": "hypothesis",
+                                                                        "infoLink": "https://reactjs.org/docs/components-and-props.html#function-and-class-components",
+                                                                        "infoDesc": "The defect might be related to ",
+                                                                        "path": [
+                                                                            "onClick={handleClick()}",
+                                                                            "onClick={handleClick(parameter)}",
+                                                                            "onClick={()=> handleClick}"
+                                                                        ],
+                                                                        "children": [
+                                                                            {
+                                                                                "Id": "11",
+                                                                                "question": "It seems that the defect is located in different UI elements or components. Please either choose a different component or a different UI element that you suspect it may contain the bug. You also can start from the begaing.",
+                                                                                "answers": null,
+                                                                                "nodeType": "deadEnd",
+                                                                                "infoLink": "https://reactjs.org/docs/components-and-props.html#function-and-class-components",
+                                                                                "infoDesc": "Hypothesis",
+                                                                                "path": [
+                                                                                    "onClick={handleClick()}",
+                                                                                    "onClick={handleClick(parameter)}",
+                                                                                    "onClick={()=> handleClick(parameter)}"
+                                                                                ]
+                                                                            }
+                                                                        ]
+                                                                    }
+                                                                ]
+                                                            }
+                                                        ]
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "Id": "10",
+                                                "question": "Does the state suppose to change after evnets related to the text?",
+                                                "answers": [
+                                                    "Yes (e.g., for each keystroke the state is updated through useState APIs)",
+                                                    "No (e.g., no state change is triggered by any event for this input text)"
+                                                ],
+                                                "nodeType": "multipleChoice",
+                                                "infoLink": "https://medium.com/technofunnel/working-with-react-pure-components-166ded26ae48",
+                                                "infoDesc": "Component is  ",
+                                                "path": [
+                                                    "input type=text"
+                                                ],
+                                                "children": [
+                                                    {
+                                                        "Id": "11",
+                                                        "question": "What is the type of event that triggers the state change?",
+                                                        "answers": [
+                                                            "onChange",
+                                                            "onKeyUp",
+                                                            "onKeyDown",
+                                                            "onKeyPress",
+                                                            "none of the above"
+                                                        ],
+                                                        "nodeType": "multipleChoice",
+                                                        "infoDesc": "",
+                                                        "path": [
+                                                            "Yes (e.g., for each keystroke the state is updated through useState APIs)"
+                                                        ],
+                                                        "children": [
+                                                            {
+                                                                "Id": "12",
+                                                                "question": "The defect might be related to the event attached to the text input. Try to change the event to onChange and see if that fix the defect.",
+                                                                "answers": null,
+                                                                "nodeType": "hypothesis",
+                                                                "infoLink": "https://reactjs.org/docs/components-and-props.html#function-and-class-components",
+                                                                "infoDesc": "Hypothesis",
+                                                                "path": [
+                                                                    "none of the above"
+                                                                ]
+                                                            },
+                                                            {
+                                                                "Id": "13",
                                                                 "question": " component is performing as expected. The defect is likely in a different component.",
                                                                 "answers": null,
                                                                 "nodeType": "deadEnd",
                                                                 "infoLink": null,
                                                                 "path": [
-                                                                    "All JSX elements are rendered correctly"
+                                                                    "onChange",
+                                                                    "onKeyUp",
+                                                                    "onKeyDown",
+                                                                    "onKeyPress"
                                                                 ],
                                                                 "infoDesc": "All seems to be well so far in this component."
                                                             }
@@ -131,6 +241,7 @@
         ]
     },
     {
+        "id": "1",
         "question": "This is not supported yet",
         "answers": null,
         "nodeType": "notSupported",
