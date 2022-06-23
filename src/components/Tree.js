@@ -7,9 +7,9 @@ export default function OrgChartTree(props) {
       // `<Tree />` will fill width/height of its container; in this case `#treeWrapper`.
       <div id="treeWrapper" style={{ width: '500em', height: '200em' }}>
         <Tree data={tree}
-            translate={{ x: 100, y: 300 }}
+            translate={{ x: 300, y: 400 }}
             leafNodeClassName="node__leaf"
-            nodeSize={{ x: 250, y: 120 }}
+            nodeSize={{ x: 400, y: 300 }}
         />
       </div>
     );

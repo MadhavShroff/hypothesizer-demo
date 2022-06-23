@@ -25,7 +25,7 @@
     "webpack-cli": "^4.9.2"
   },
   "scripts": {
-    "start": "tsc src/TreeNode/TreeNode.ts && node src/TreeNode/TreeNode.js && react-scripts start",
+    "start": "react-scripts start",
     "build": "tsc src/TreeNode/TreeNode.ts && node src/TreeNode/TreeNode.js && react-scripts build",
     "test": "tsc src/TreeNode/TreeNode.ts && node src/TreeNode/TreeNode.js && react-scripts test",
     "eject": "tsc src/TreeNode/TreeNode.ts && node src/TreeNode/TreeNode.js && react-scripts eject"

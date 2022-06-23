@@ -22,7 +22,7 @@ var TreeNode = /** @class */ (function () {
             }
         });
     };
-    TreeNode.nodeCount = 0;
+    TreeNode.nodeCount = 0; // static counter for numbering nodes
     return TreeNode;
 }());
 function generateExampleTree() {
